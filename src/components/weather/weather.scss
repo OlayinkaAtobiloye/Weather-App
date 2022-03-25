@@ -1,0 +1,10 @@
+.weather{
+    display: flex;
+    min-height: 100vh;
+}
+
+@media (max-width: 820px){
+    .weather{
+        flex-direction: column;
+    }
+}

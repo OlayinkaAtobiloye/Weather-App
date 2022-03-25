@@ -1,0 +1,62 @@
+@import '../../_variables.scss';
+
+.dayCard{
+    height: 177px;
+// width: 120px;
+background-color: $card;
+width: calc(100%/6);
+padding: 16px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+
+
+p{
+    &:first-child{
+        font-family: Raleway;
+font-size: 16px;
+font-weight: 500;
+line-height: 19px;
+color: $white;
+    }
+
+    &:last-child{
+        span:first-child{
+            font-family: Raleway;
+font-size: 16px;
+font-weight: 500;
+line-height: 19px;
+color: $white;
+        }
+        span:last-child{
+            font-family: Raleway;
+font-size: 16px;
+font-weight: 500;
+line-height: 19px;
+color:  $grey;
+        }
+    }
+}
+
+img{
+    height: 62px;
+width: 56px;
+}
+
+p:last-child{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+}
+
+
+
+@media (max-width: 820px){
+    .dayCard{
+        width: calc(100%/2.2);
+        margin-bottom: 32px;
+    }
+}
