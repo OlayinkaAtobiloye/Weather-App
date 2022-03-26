@@ -37,16 +37,16 @@ fToC(45);
     const [maxtemp, setmaxtemp] = useState<number>(0);
     const [weather_state_abbr, set_weather_state_abbr] = useState<string>();
     
-    let config = {
-        headers: {
-            "X-Requested-With": "XMLHttpRequest"
-          }
-      }
+    // let config = {
+    //     headers: {
+    //         "X-Requested-With": "XMLHttpRequest"
+    //       }
+    //   }
       
     useEffect(
         () => {
-            const proxyURL = "https://radiant-plains-61566.herokuapp.com/"
-        axios.get(`${proxyURL}https://www.metaweather.com/api/location/44418/${props.date}`, config).then(res =>
+            // const proxyURL = "https://radiant-plains-61566.herokuapp.com/"
+        axios.get(`/api/location/44418/${props.date}`).then(res =>
            {setmintemp(res.data.min_temp)
            setmaxtemp(res.data.max_temp)
            set_weather_state_abbr(res.data.weather_state_abbr)
