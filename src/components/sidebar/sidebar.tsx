@@ -13,6 +13,7 @@ import t from '../../Images/Thunderstorm.png';
 import h from '../../Images/hail.png';
 import c from '../../Images/Clear.png';
 import s from '../../Images/Shower.png';
+import { ServerResponse } from "http";
 
 interface Props{
 togglePopup?: any,
@@ -44,18 +45,20 @@ class Sidebar extends React.Component<Props, state>{
         let config = {
             headers: {
                 "X-Requested-With": "XMLHttpRequest"
-              }
+              },
           }
           
         const proxyURL = "https://radiant-plains-61566.herokuapp.com/"
-        axios.get(`${proxyURL}https://www.metaweather.com/api/location/search/?query=london`, config).then(res => {this.props.setWOEID(res.data.woeid);
-           axios.get(`${proxyURL}https://www.metaweather.com/api/location/44418`, config).then(
-                response =>
+        axios.get(`/api/location/search/?query=london`).then(res => {
+            console.log('data', res)
+            axios.get(`/api/location/44418/`).then(
+                (response) =>
                 {
+                    console.log(response)
                     const data = response.data.consolidated_weather;
-                this.props.setWeather(data.humidity, data.visibilty, data.air_pressure, data.wind_speed)
-                this.setState({weather_state_abbr: res.data.weather_state_abbr, weather_state_name: res.data.weather_state_name})
-                }
+                    this.props.setWeather(data.humidity, data.visibilty, data.air_pressure, data.wind_speed)
+                    this.setState({weather_state_abbr: res.data.weather_state_abbr, weather_state_name: res.data.weather_state_name})
+                },
                 // this.setState(
                 //     () => {return{
                 //         location: response.data.title,
@@ -64,8 +67,7 @@ class Sidebar extends React.Component<Props, state>{
                 // }
                 // )
             )
-        }
-        )
+        })
     }
 
     render(){
